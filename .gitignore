@@ -7,6 +7,9 @@ bin-release/
 # Other files and folders
 .settings/
 
+# Other files and folders
+.settings/
+.metadata/
 # Executables
 *.swf
 *.air
