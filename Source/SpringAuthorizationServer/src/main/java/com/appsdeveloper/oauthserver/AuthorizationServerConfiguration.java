@@ -44,8 +44,8 @@ public class AuthorizationServerConfiguration {
 				.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
 				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 				.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-				.redirectUri("http://172.28.128.1:8080/login/oauth2/code/users-client-oidc")
-				.redirectUri("http://172.28.128.1:8080/authorized")
+				.redirectUri("http://172.17.0.1:8081/login/oauth2/code/users-client-oidc")//Client IP & ID details: Should be IP address not the "localhost"
+				.redirectUri("http://172.17.0.1:8081/authorized")//Client Application IP: Should be IP address not the "localhost"
 				.scope(OidcScopes.OPENID)
 				.scope("read")
 				//.clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build()) //like PKCI proof of Key we can enable
@@ -66,7 +66,8 @@ public class AuthorizationServerConfiguration {
     public ProviderSettings providerSettings() {
         return ProviderSettings.builder()
                 //.issuer("http://auth-server:8000")
-        		.issuer("http://172.28.128.1:8000")
+        		//.issuer("http://172.28.128.1:8000")//AuthServer IP
+        		.issuer("http://auth-server:8000")//Need to update in the host file
                 .build();
     }
     
